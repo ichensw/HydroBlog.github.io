@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ElasticSearch基础讲解与安装 | iChensw Blog</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;display=swap">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="向热爱生命一样热爱编程">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.b90962b5.css" as="style"><link rel="preload" href="/assets/js/app.32f0200a.js" as="script"><link rel="preload" href="/assets/js/3.11fa7831.js" as="script"><link rel="preload" href="/assets/js/1.13c24760.js" as="script"><link rel="preload" href="/assets/js/26.799c5605.js" as="script"><link rel="preload" href="/assets/js/8.ff5ef1e6.js" as="script"><link rel="prefetch" href="/assets/js/10.52308f05.js"><link rel="prefetch" href="/assets/js/11.ebb31795.js"><link rel="prefetch" href="/assets/js/12.69ba3e33.js"><link rel="prefetch" href="/assets/js/13.595f2685.js"><link rel="prefetch" href="/assets/js/14.bbd2e07a.js"><link rel="prefetch" href="/assets/js/15.f62abb6c.js"><link rel="prefetch" href="/assets/js/16.62ada990.js"><link rel="prefetch" href="/assets/js/17.4280d8a5.js"><link rel="prefetch" href="/assets/js/18.6504af8d.js"><link rel="prefetch" href="/assets/js/19.fa663238.js"><link rel="prefetch" href="/assets/js/20.cc36479b.js"><link rel="prefetch" href="/assets/js/21.363ad1de.js"><link rel="prefetch" href="/assets/js/22.51091fd6.js"><link rel="prefetch" href="/assets/js/23.a59cf5c6.js"><link rel="prefetch" href="/assets/js/24.282452d1.js"><link rel="prefetch" href="/assets/js/25.42df6437.js"><link rel="prefetch" href="/assets/js/27.848ed941.js"><link rel="prefetch" href="/assets/js/28.d6baeb18.js"><link rel="prefetch" href="/assets/js/29.1d173b34.js"><link rel="prefetch" href="/assets/js/30.d1f0e67e.js"><link rel="prefetch" href="/assets/js/31.c1ccabc1.js"><link rel="prefetch" href="/assets/js/32.5a504340.js"><link rel="prefetch" href="/assets/js/33.c0d5f5a3.js"><link rel="prefetch" href="/assets/js/34.2658657b.js"><link rel="prefetch" href="/assets/js/35.ed764893.js"><link rel="prefetch" href="/assets/js/36.c9844134.js"><link rel="prefetch" href="/assets/js/37.1e2b3f0d.js"><link rel="prefetch" href="/assets/js/38.ba2a0106.js"><link rel="prefetch" href="/assets/js/39.1e8d873d.js"><link rel="prefetch" href="/assets/js/4.5fc380ce.js"><link rel="prefetch" href="/assets/js/40.363024e6.js"><link rel="prefetch" href="/assets/js/41.b3ae1b56.js"><link rel="prefetch" href="/assets/js/42.5334a5f9.js"><link rel="prefetch" href="/assets/js/43.104f717d.js"><link rel="prefetch" href="/assets/js/44.41c015b7.js"><link rel="prefetch" href="/assets/js/45.75e8ea79.js"><link rel="prefetch" href="/assets/js/46.22b081a0.js"><link rel="prefetch" href="/assets/js/47.a75b13e9.js"><link rel="prefetch" href="/assets/js/48.8970f89f.js"><link rel="prefetch" href="/assets/js/49.762713b5.js"><link rel="prefetch" href="/assets/js/5.58534446.js"><link rel="prefetch" href="/assets/js/50.a24a2a7e.js"><link rel="prefetch" href="/assets/js/51.e2d14605.js"><link rel="prefetch" href="/assets/js/52.1bd7e25f.js"><link rel="prefetch" href="/assets/js/53.07fabbc5.js"><link rel="prefetch" href="/assets/js/54.bd025209.js"><link rel="prefetch" href="/assets/js/55.71b636da.js"><link rel="prefetch" href="/assets/js/56.e4473e39.js"><link rel="prefetch" href="/assets/js/57.7ffad7e3.js"><link rel="prefetch" href="/assets/js/58.c39bca93.js"><link rel="prefetch" href="/assets/js/59.294c5981.js"><link rel="prefetch" href="/assets/js/6.48d28dd5.js"><link rel="prefetch" href="/assets/js/60.87c7543c.js"><link rel="prefetch" href="/assets/js/61.595b4375.js"><link rel="prefetch" href="/assets/js/62.94e6a410.js"><link rel="prefetch" href="/assets/js/7.4aa26877.js"><link rel="prefetch" href="/assets/js/9.e1e6e1f9.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b90962b5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1156296a><div data-v-1156296a><div id="loader-wrapper" class="loading-wrapper" data-v-e60bdfd0 data-v-1156296a data-v-1156296a><dl id="loading-tpl" data-v-e60bdfd0><div id="loading-contain" data-v-e60bdfd0><div id="loading-wrap1" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball1" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap2" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball2" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap3" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball3" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap4" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball4" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap5" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball5" class="loading-ball" data-v-e60bdfd0></div></div></div></dl> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4e82dffc data-v-1156296a data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>iChensw Blog</h3> <p class="description" data-v-4e82dffc data-v-4e82dffc>向热爱生命一样热爱编程</p> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>一条鱼</span>
+            
+          <span data-v-4e82dffc>2021 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1156296a><header class="navbar" data-v-1156296a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/avatar.jpg" alt="iChensw Blog" class="logo"> <span class="site-name">iChensw Blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Web/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Web/ES6/" class="nav-link"><i class="undefined"></i>
+  ES6
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      后端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Storage/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring全家桶
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Dubbo/" class="nav-link"><i class="undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis Plus
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/JavaQuestion/" class="nav-link"><i class="undefined"></i>
+  Java基础补充
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/Base/DesignPattern/" class="nav-link"><i class="undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/ElasticSearch/" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  ElasticSearch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      服务器
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Others/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Others/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Documents/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/InterviewQuestion/" class="nav-link"><i class="undefined"></i>
+  面试题
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1156296a></div> <aside class="sidebar" data-v-1156296a><div class="personal-info-wrapper" data-v-828910c6 data-v-1156296a><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-828910c6> <h3 class="name" data-v-828910c6>
+    一条鱼
+  </h3> <div class="num" data-v-828910c6><div data-v-828910c6><h3 data-v-828910c6>50</h3> <h6 data-v-828910c6>文章</h6></div> <div data-v-828910c6><h3 data-v-828910c6>34</h3> <h6 data-v-828910c6>标签</h6></div></div> <ul class="social-links" data-v-828910c6></ul> <hr data-v-828910c6></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Web/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Web/ES6/" class="nav-link"><i class="undefined"></i>
+  ES6
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      后端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Storage/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring全家桶
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Dubbo/" class="nav-link"><i class="undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis Plus
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/JavaQuestion/" class="nav-link"><i class="undefined"></i>
+  Java基础补充
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/Base/DesignPattern/" class="nav-link"><i class="undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/ElasticSearch/" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  ElasticSearch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      服务器
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Others/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Others/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Documents/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/InterviewQuestion/" class="nav-link"><i class="undefined"></i>
+  面试题
+</a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>ElasticSearch</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blogs/Storage/ElasticSearch/" aria-current="page" class="active sidebar-link">ElasticSearch基础讲解与安装</a></li><li><a href="/blogs/Storage/ElasticSearch/ESUseMethod.html" class="sidebar-link">ElasticSearch使用方法</a></li><li><a href="/blogs/Storage/ElasticSearch/ESClusterBuild.html" class="sidebar-link">ElasticSearch集群搭建</a></li><li><a href="/blogs/Storage/ElasticSearch/ESJava.html" class="sidebar-link">Java客户端集成ElasticSearch</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4e82dffc data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>ElasticSearch基础讲解与安装</h3> <!----> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>一条鱼</span>
+            
+          <span data-v-4e82dffc>2021 - </span>
+          2022
+        </a></span></div></div> <div data-v-1156296a><main class="page"><section><div class="page-title"><h1 class="title">ElasticSearch基础讲解与安装</h1> <div data-v-1ff7123e><i class="iconfont reco-account" data-v-1ff7123e><span data-v-1ff7123e>一条鱼</span></i> <i class="iconfont reco-date" data-v-1ff7123e><span data-v-1ff7123e>2021/9/2</span></i> <i class="iconfont reco-eye" data-v-1ff7123e><span id="/blogs/Storage/ElasticSearch/" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-1ff7123e><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont reco-tag" data-v-1ff7123e><span class="tag-item" data-v-1ff7123e>ElasticSearch</span></i></div></div> <div class="theme-reco-content content__default"><h1 id="elasticsearch基础讲解与安装"><a href="#elasticsearch基础讲解与安装" class="header-anchor">#</a> ElasticSearch基础讲解与安装</h1> <h2 id="_1、为什么使用elasticsearch"><a href="#_1、为什么使用elasticsearch" class="header-anchor">#</a> 1、为什么使用ElasticSearch ？</h2> <h3 id="案例场景"><a href="#案例场景" class="header-anchor">#</a> 案例场景：</h3> <p>​	需要模糊查询一条数据，数据量有千万级。</p> <h3 id="实现方法"><a href="#实现方法" class="header-anchor">#</a> 实现方法：</h3> <ol><li><p>使用SQL语句的like查询？</p> <p>select * from goods where title like '%荣耀%';
+数据量庞大时，应该如何处理？
+商品数据量超过千万，一次查询得花费大量时间。</p></li> <li><p>使用全文检索（ElasticSearch等）</p> <p>主流搜索技术</p></li></ol> <h2 id="_2、什么是全文检索"><a href="#_2、什么是全文检索" class="header-anchor">#</a> 2、什么是全文检索</h2> <ol><li><h3 id="数据的分类"><a href="#数据的分类" class="header-anchor">#</a> 数据的分类</h3> <p>数据总共分为两类：结构化数据、非结构化数据</p> <h4 id="结构化数据"><a href="#结构化数据" class="header-anchor">#</a> 结构化数据：</h4> <p>​	固定格式、有限长度、数据类型固定</p> <p>​	例如：数据库中的数据就是结构化数据</p> <h4 id="非结构化数据"><a href="#非结构化数据" class="header-anchor">#</a> 非结构化数据：</h4> <p>​	格式不固定、长度不固定、数据类型不固定</p> <p>​	例如：磁盘上的文件</p></li> <li><h3 id="结构化数据的搜索-数据库"><a href="#结构化数据的搜索-数据库" class="header-anchor">#</a> 结构化数据的搜索（数据库）</h3> <p>直接使用SQL语句进行查询</p></li> <li><h3 id="非结构化数据的查询"><a href="#非结构化数据的查询" class="header-anchor">#</a> 非结构化数据的查询</h3> <p>需求：找出文件内容中包含Java的所有文件</p> <h4 id="实现思路"><a href="#实现思路" class="header-anchor">#</a> 实现思路：</h4> <ol><li><h5 id="顺序扫描-暴力模式"><a href="#顺序扫描-暴力模式" class="header-anchor">#</a> 顺序扫描---暴力模式</h5> <p>数据量庞大，性能差。</p></li> <li><h5 id="把非结构化数据变成结构化数据"><a href="#把非结构化数据变成结构化数据" class="header-anchor">#</a> 把非结构化数据变成结构化数据</h5> <p>基于结构化数据创建索引，然后在查询。</p> <p><strong>索引</strong>：是一个独立的数据结构，b+tree结构。为了提高查询效率创建，需要独立占用磁盘空间。</p> <p><strong>停用词</strong>：没有意义的词，例如英文中的and、the、a、an等。</p> <p><strong>全文检索</strong>：先对内容进行分词处理，根据空格对文章内容进行字符串拆分。合并<code>重复的单词</code>、去除<code>标点符号</code>、去除<code>停用词</code>。
+创建索引，然后查询索引的过程就叫做全文检索。	
+索引可以一次创建多次使用，表现为每次查询速度都非常快。</p></li></ol></li></ol> <h2 id="_3、全文检索的应用场景"><a href="#_3、全文检索的应用场景" class="header-anchor">#</a> 3、全文检索的应用场景</h2> <ol><li><h3 id="搜索引擎"><a href="#搜索引擎" class="header-anchor">#</a> 搜索引擎</h3> <p>使用爬虫程序抓取网页的内容，分词创建索引。</p> <p>搜索时，直接查询索引。</p></li> <li><h3 id="站内搜索"><a href="#站内搜索" class="header-anchor">#</a> 站内搜索</h3> <p>电商搜索
+论坛搜索
+微博搜索</p></li> <li><h3 id="搜索磁盘上的文件"><a href="#搜索磁盘上的文件" class="header-anchor">#</a> 搜索磁盘上的文件</h3></li> <li><h3 id="只要有查询的地方就可以使用全文检索。"><a href="#只要有查询的地方就可以使用全文检索。" class="header-anchor">#</a> 只要有查询的地方就可以使用全文检索。</h3></li></ol> <h2 id="_4、如何实现全文检索"><a href="#_4、如何实现全文检索" class="header-anchor">#</a> 4、如何实现全文检索</h2> <ol><li><h3 id="使用lucene-在java中唯一的一个全文检索技术。"><a href="#使用lucene-在java中唯一的一个全文检索技术。" class="header-anchor">#</a> 使用lucene，在java中唯一的一个全文检索技术。</h3> <p>一个全文检索工具包。很少直接使用。相当于ES和Solr等技术的底层工具包</p></li> <li><h3 id="solr、elasticsearch-es"><a href="#solr、elasticsearch-es" class="header-anchor">#</a> Solr、ElasticSearch（ES）</h3> <p>推荐使用。
+都是基于Lucene的全文检索服务器。独立运行，支持集群。
+实时搜索时，ES的性能更好。</p></li></ol> <h2 id="_5、全文检索的流程-仅讲述流程-未有实例"><a href="#_5、全文检索的流程-仅讲述流程-未有实例" class="header-anchor">#</a> 5、全文检索的流程 (仅讲述流程,未有实例)</h2> <ol><li><h3 id="创建索引"><a href="#创建索引" class="header-anchor">#</a> 创建索引</h3> <ol><li><h4 id="采集数据"><a href="#采集数据" class="header-anchor">#</a> 采集数据</h4> <p>可以各种新式的数据源
+搜索引擎：爬虫，从互联网抓取数据
+站内搜索：数据库
+文件搜索：磁盘上的文件</p></li> <li><h4 id="创建文档对象"><a href="#创建文档对象" class="header-anchor">#</a> 创建文档对象</h4> <p>把原始文档进行封装。Document对象。
+其中包含多个field
+每个field可以自定一个名称，不同的Document中可以有不同的field。</p></li> <li><h4 id="分析文档"><a href="#分析文档" class="header-anchor">#</a> 分析文档</h4></li></ol> <p>对其中需要分析的field进行分析处理，可以在field中进行指定。
+分词：进行关键词拆分。
+去除标点符号，合并相同的单词。
+去除停用词
+转换大小写
+最终得到一个单词列表</p> <p>其中并不是所有的field都需要分析，例如文件的路径。
+单词列表中，其中一个关键词就是一个term。</p> <ol start="4"><li><h4 id="创建索引-2"><a href="#创建索引-2" class="header-anchor">#</a> 创建索引</h4> <p>其中包含三部分内容：
+1）索引：基于关键词（term）创建的。
+2）文档对象：Document，第二步封装好的Document对象。
+3）关键词和文档的对应关系</p></li></ol></li> <li><h3 id="查询索引"><a href="#查询索引" class="header-anchor">#</a> 查询索引</h3> <ol><li><h4 id="用户接口"><a href="#用户接口" class="header-anchor">#</a> 用户接口</h4> <p>用户输入查询内容
+输入可以是一个关键词，也可以是一句话。</p></li> <li><h4 id="封装查询条件"><a href="#封装查询条件" class="header-anchor">#</a> 封装查询条件</h4> <p>需要把用户输入的内容进行分词处理。得到一个单词列表。
+需要指定要查询的field。
+查询条件：
+field：value</p></li> <li><h4 id="执行查询"><a href="#执行查询" class="header-anchor">#</a> 执行查询</h4> <p>在索引中根据查询条件查询对应的字段，找到对应的关键词。
+如果关键词在索引中存在的就能查询到结果。如果不存在就没有结果。
+根据关键词找到对应的文档id列表，根据文档id查询到对应的Document对象。</p></li> <li><h4 id="展示结果"><a href="#展示结果" class="header-anchor">#</a> 展示结果</h4> <p>关键词的高亮显示，分页处理，根据相关度进行排序。</p></li></ol></li></ol> <h2 id="_6、es下载"><a href="#_6、es下载" class="header-anchor">#</a> 6、ES下载</h2> <p>​	官方网站或者如下地址。
+​	下载地址：
+​	链接：https://pan.baidu.com/s/1Tdsgm9608fyt_j7gMsLZhg
+​	提取码：e2nd</p> <h2 id="_7、安装"><a href="#_7、安装" class="header-anchor">#</a> 7、安装</h2> <ol><li><h3 id="安装elasticsearch"><a href="#安装elasticsearch" class="header-anchor">#</a> 安装ElasticSearch</h3></li> <li><h3 id="安装elasticsearch-head客户端"><a href="#安装elasticsearch-head客户端" class="header-anchor">#</a> 安装elasticsearch-head客户端</h3> <p>使用nodejs开发的。</p></li> <li><h3 id="安装kibana"><a href="#安装kibana" class="header-anchor">#</a> 安装kibana</h3> <p>devTools功能实现对ES的管理</p></li></ol></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/blogs/Storage/ElasticSearch/ESUseMethod.html">
+            ElasticSearch使用方法
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-70334359><li class="level-2" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#_1、为什么使用elasticsearch" class="sidebar-link reco-side-_1、为什么使用elasticsearch" data-v-70334359>1、为什么使用ElasticSearch ？</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#案例场景" class="sidebar-link reco-side-案例场景" data-v-70334359>案例场景：</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#实现方法" class="sidebar-link reco-side-实现方法" data-v-70334359>实现方法：</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#_2、什么是全文检索" class="sidebar-link reco-side-_2、什么是全文检索" data-v-70334359>2、什么是全文检索</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#数据的分类" class="sidebar-link reco-side-数据的分类" data-v-70334359>数据的分类</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#结构化数据的搜索-数据库" class="sidebar-link reco-side-结构化数据的搜索-数据库" data-v-70334359>结构化数据的搜索（数据库）</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#非结构化数据的查询" class="sidebar-link reco-side-非结构化数据的查询" data-v-70334359>非结构化数据的查询</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#_3、全文检索的应用场景" class="sidebar-link reco-side-_3、全文检索的应用场景" data-v-70334359>3、全文检索的应用场景</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#搜索引擎" class="sidebar-link reco-side-搜索引擎" data-v-70334359>搜索引擎</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#站内搜索" class="sidebar-link reco-side-站内搜索" data-v-70334359>站内搜索</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#搜索磁盘上的文件" class="sidebar-link reco-side-搜索磁盘上的文件" data-v-70334359>搜索磁盘上的文件</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#只要有查询的地方就可以使用全文检索。" class="sidebar-link reco-side-只要有查询的地方就可以使用全文检索。" data-v-70334359>只要有查询的地方就可以使用全文检索。</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#_4、如何实现全文检索" class="sidebar-link reco-side-_4、如何实现全文检索" data-v-70334359>4、如何实现全文检索</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#使用lucene-在java中唯一的一个全文检索技术。" class="sidebar-link reco-side-使用lucene-在java中唯一的一个全文检索技术。" data-v-70334359>使用lucene，在java中唯一的一个全文检索技术。</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#solr、elasticsearch-es" class="sidebar-link reco-side-solr、elasticsearch-es" data-v-70334359>Solr、ElasticSearch（ES）</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#_5、全文检索的流程-仅讲述流程-未有实例" class="sidebar-link reco-side-_5、全文检索的流程-仅讲述流程-未有实例" data-v-70334359>5、全文检索的流程 (仅讲述流程,未有实例)</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#创建索引" class="sidebar-link reco-side-创建索引" data-v-70334359>创建索引</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#查询索引" class="sidebar-link reco-side-查询索引" data-v-70334359>查询索引</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#_6、es下载" class="sidebar-link reco-side-_6、es下载" data-v-70334359>6、ES下载</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#_7、安装" class="sidebar-link reco-side-_7、安装" data-v-70334359>7、安装</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#安装elasticsearch" class="sidebar-link reco-side-安装elasticsearch" data-v-70334359>安装ElasticSearch</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#安装elasticsearch-head客户端" class="sidebar-link reco-side-安装elasticsearch-head客户端" data-v-70334359>安装elasticsearch-head客户端</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/ElasticSearch/#安装kibana" class="sidebar-link reco-side-安装kibana" data-v-70334359>安装kibana</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><canvas id="vuepress-canvas-cursor"></canvas><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="left:88px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 iChensw Blog
+    </div> <div class="operation" style="left:148px;bottom:40px;display:;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="left:30px;bottom:-20px;opacity:0.9;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div><div></div><!----><!----></div></div>
+    <script src="/assets/js/app.32f0200a.js" defer></script><script src="/assets/js/3.11fa7831.js" defer></script><script src="/assets/js/1.13c24760.js" defer></script><script src="/assets/js/26.799c5605.js" defer></script><script src="/assets/js/8.ff5ef1e6.js" defer></script>
+  </body>
+</html>

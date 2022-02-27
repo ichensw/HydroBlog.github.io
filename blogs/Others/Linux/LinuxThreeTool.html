@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Linux三剑客Grep/Awk/Sed | iChensw Blog</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;display=swap">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="向热爱生命一样热爱编程">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.b90962b5.css" as="style"><link rel="preload" href="/assets/js/app.32f0200a.js" as="script"><link rel="preload" href="/assets/js/3.11fa7831.js" as="script"><link rel="preload" href="/assets/js/1.13c24760.js" as="script"><link rel="preload" href="/assets/js/17.4280d8a5.js" as="script"><link rel="preload" href="/assets/js/8.ff5ef1e6.js" as="script"><link rel="prefetch" href="/assets/js/10.52308f05.js"><link rel="prefetch" href="/assets/js/11.ebb31795.js"><link rel="prefetch" href="/assets/js/12.69ba3e33.js"><link rel="prefetch" href="/assets/js/13.595f2685.js"><link rel="prefetch" href="/assets/js/14.bbd2e07a.js"><link rel="prefetch" href="/assets/js/15.f62abb6c.js"><link rel="prefetch" href="/assets/js/16.62ada990.js"><link rel="prefetch" href="/assets/js/18.6504af8d.js"><link rel="prefetch" href="/assets/js/19.fa663238.js"><link rel="prefetch" href="/assets/js/20.cc36479b.js"><link rel="prefetch" href="/assets/js/21.363ad1de.js"><link rel="prefetch" href="/assets/js/22.51091fd6.js"><link rel="prefetch" href="/assets/js/23.a59cf5c6.js"><link rel="prefetch" href="/assets/js/24.282452d1.js"><link rel="prefetch" href="/assets/js/25.42df6437.js"><link rel="prefetch" href="/assets/js/26.799c5605.js"><link rel="prefetch" href="/assets/js/27.848ed941.js"><link rel="prefetch" href="/assets/js/28.d6baeb18.js"><link rel="prefetch" href="/assets/js/29.1d173b34.js"><link rel="prefetch" href="/assets/js/30.d1f0e67e.js"><link rel="prefetch" href="/assets/js/31.c1ccabc1.js"><link rel="prefetch" href="/assets/js/32.5a504340.js"><link rel="prefetch" href="/assets/js/33.c0d5f5a3.js"><link rel="prefetch" href="/assets/js/34.2658657b.js"><link rel="prefetch" href="/assets/js/35.ed764893.js"><link rel="prefetch" href="/assets/js/36.c9844134.js"><link rel="prefetch" href="/assets/js/37.1e2b3f0d.js"><link rel="prefetch" href="/assets/js/38.ba2a0106.js"><link rel="prefetch" href="/assets/js/39.1e8d873d.js"><link rel="prefetch" href="/assets/js/4.5fc380ce.js"><link rel="prefetch" href="/assets/js/40.363024e6.js"><link rel="prefetch" href="/assets/js/41.b3ae1b56.js"><link rel="prefetch" href="/assets/js/42.5334a5f9.js"><link rel="prefetch" href="/assets/js/43.104f717d.js"><link rel="prefetch" href="/assets/js/44.41c015b7.js"><link rel="prefetch" href="/assets/js/45.75e8ea79.js"><link rel="prefetch" href="/assets/js/46.22b081a0.js"><link rel="prefetch" href="/assets/js/47.a75b13e9.js"><link rel="prefetch" href="/assets/js/48.8970f89f.js"><link rel="prefetch" href="/assets/js/49.762713b5.js"><link rel="prefetch" href="/assets/js/5.58534446.js"><link rel="prefetch" href="/assets/js/50.a24a2a7e.js"><link rel="prefetch" href="/assets/js/51.e2d14605.js"><link rel="prefetch" href="/assets/js/52.1bd7e25f.js"><link rel="prefetch" href="/assets/js/53.07fabbc5.js"><link rel="prefetch" href="/assets/js/54.bd025209.js"><link rel="prefetch" href="/assets/js/55.71b636da.js"><link rel="prefetch" href="/assets/js/56.e4473e39.js"><link rel="prefetch" href="/assets/js/57.7ffad7e3.js"><link rel="prefetch" href="/assets/js/58.c39bca93.js"><link rel="prefetch" href="/assets/js/59.294c5981.js"><link rel="prefetch" href="/assets/js/6.48d28dd5.js"><link rel="prefetch" href="/assets/js/60.87c7543c.js"><link rel="prefetch" href="/assets/js/61.595b4375.js"><link rel="prefetch" href="/assets/js/62.94e6a410.js"><link rel="prefetch" href="/assets/js/7.4aa26877.js"><link rel="prefetch" href="/assets/js/9.e1e6e1f9.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b90962b5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1156296a><div data-v-1156296a><div id="loader-wrapper" class="loading-wrapper" data-v-e60bdfd0 data-v-1156296a data-v-1156296a><dl id="loading-tpl" data-v-e60bdfd0><div id="loading-contain" data-v-e60bdfd0><div id="loading-wrap1" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball1" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap2" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball2" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap3" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball3" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap4" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball4" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap5" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball5" class="loading-ball" data-v-e60bdfd0></div></div></div></dl> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4e82dffc data-v-1156296a data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>iChensw Blog</h3> <p class="description" data-v-4e82dffc data-v-4e82dffc>向热爱生命一样热爱编程</p> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>一条鱼</span>
+            
+          <span data-v-4e82dffc>2021 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1156296a><header class="navbar" data-v-1156296a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/avatar.jpg" alt="iChensw Blog" class="logo"> <span class="site-name">iChensw Blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Web/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Web/ES6/" class="nav-link"><i class="undefined"></i>
+  ES6
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      后端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Storage/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring全家桶
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Dubbo/" class="nav-link"><i class="undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis Plus
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/JavaQuestion/" class="nav-link"><i class="undefined"></i>
+  Java基础补充
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/Base/DesignPattern/" class="nav-link"><i class="undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/ElasticSearch/" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      服务器
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Others/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Others/Linux/" class="nav-link router-link-active"><i class="undefined"></i>
+  Linux
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Documents/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/InterviewQuestion/" class="nav-link"><i class="undefined"></i>
+  面试题
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1156296a></div> <aside class="sidebar" data-v-1156296a><div class="personal-info-wrapper" data-v-828910c6 data-v-1156296a><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-828910c6> <h3 class="name" data-v-828910c6>
+    一条鱼
+  </h3> <div class="num" data-v-828910c6><div data-v-828910c6><h3 data-v-828910c6>50</h3> <h6 data-v-828910c6>文章</h6></div> <div data-v-828910c6><h3 data-v-828910c6>34</h3> <h6 data-v-828910c6>标签</h6></div></div> <ul class="social-links" data-v-828910c6></ul> <hr data-v-828910c6></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Web/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Web/ES6/" class="nav-link"><i class="undefined"></i>
+  ES6
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      后端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Storage/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring全家桶
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Dubbo/" class="nav-link"><i class="undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis Plus
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/JavaQuestion/" class="nav-link"><i class="undefined"></i>
+  Java基础补充
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/Base/DesignPattern/" class="nav-link"><i class="undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/ElasticSearch/" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      服务器
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Others/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Others/Linux/" class="nav-link router-link-active"><i class="undefined"></i>
+  Linux
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Documents/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/InterviewQuestion/" class="nav-link"><i class="undefined"></i>
+  面试题
+</a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Linux基础命令</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blogs/Others/Linux/" aria-current="page" class="sidebar-link">Linux常用基本命令</a></li><li><a href="/blogs/Others/Linux/LinuxThreeTool.html" aria-current="page" class="active sidebar-link">Linux三剑客Grep/Awk/Sed</a></li><li><a href="/blogs/Others/Linux/ShellProgram.html" class="sidebar-link">Shell编程</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4e82dffc data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>Linux三剑客Grep/Awk/Sed</h3> <!----> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>一条鱼</span>
+            
+          <span data-v-4e82dffc>2021 - </span>
+          2022
+        </a></span></div></div> <div data-v-1156296a><main class="page"><section><div class="page-title"><h1 class="title">Linux三剑客Grep/Awk/Sed</h1> <div data-v-1ff7123e><i class="iconfont reco-account" data-v-1ff7123e><span data-v-1ff7123e>一条鱼</span></i> <i class="iconfont reco-date" data-v-1ff7123e><span data-v-1ff7123e>2021/6/21</span></i> <i class="iconfont reco-eye" data-v-1ff7123e><span id="/blogs/Others/Linux/LinuxThreeTool.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-1ff7123e><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont reco-tag" data-v-1ff7123e><span class="tag-item" data-v-1ff7123e>Linux</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="linux三剑客grep、awk、sed"><a href="#linux三剑客grep、awk、sed" class="header-anchor">#</a> Linux三剑客grep、awk、sed</h2> <p>#1.grep 更适合单纯的查找或匹配文本</p> <p>#2. sed 更适合编辑文本</p> <p>#3. awk 更适合格式化文本，对文本进行较复杂格式处理</p> <h3 id="一、-grep"><a href="#一、-grep" class="header-anchor">#</a> 一、 grep</h3> <p><strong>1.作用</strong></p> <p>Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。</p> <p>grep家族包括grep、egrep和fgrep。egrep和fgrep的命令只跟grep有很小不同。egrep是grep的扩展，支持更多的re元字符， fgrep就是fixed grep或fast grep，它们把所有的字母都看作单词，也就是说，正则表达式中的元字符表示回其自身的字面意义，不再特殊。linux使用GNU版本的grep。它功能更强，可以通过-G、-E、-F命令行选项来使用egrep和fgrep的功能。</p> <p><strong>2.格式</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>grep [options]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><strong>3.主要参数</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>grep --help
+
+[options]主要参数：
+-c：只输出匹配行的计数。
+-i：不区分大小写。
+-h：查询多文件时不显示文件名。
+-l：查询多文件时只输出包含匹配字符的文件名。
+-n：显示匹配行及 行号。
+-s：不显示不存在或无匹配文本的错误信息。
+-v：显示不包含匹配文本的所有行。
+--color=auto ：可以将找到的关键词部分加上颜色的显示。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>pattern正则表达式主要参数：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\： 忽略正则表达式中特殊字符的原有含义。
+^：匹配正则表达式的开始行。
+$: 匹配正则表达式的结束行。
+\&lt;：从匹配正则表达 式的行开始。
+\&gt;：到匹配正则表达式的行结束。
+[ ]：单个字符，如[A]即A符合要求 。
+[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。
+.：所有的单个字符。
+*：有字符，长度可以为0。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>4.grep命令使用简单实例</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ grep ‘test’ d*
+显示所有以d开头的文件中包含 test的行。
+
+$ grep ‘test’ aa bb cc
+显示在aa，bb，cc文件中匹配test的行。
+
+$ grep ‘[a-z]\{5\}’ aa
+显示所有包含每个字符串至少有5个连续小写字符的字符串的行。
+
+$ grep ‘w\(es\)t.*\1′ aa
+如果west被匹配，则es就被存储到内存中，并标记为1，然后搜索任意个字符(.*)，这些字符后面紧跟着 另外一个es(\1)，找到就显示该行。如果用egrep或grep -E，就不用”\”号进行转义，直接写成’w(es)t.*\1′就可以了。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>5.grep命令使用复杂实例</p> <p>明确要求搜索子目录：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>grep -r
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>或忽略子目录：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>grep -d skip
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>如果有很多输出时，您可以通过管道将其转到’less’上阅读：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ grep magic /usr/src/Linux/Documentation/* | less
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这样，您就可以更方便地阅读。</p> <p>有一点要注意，您必需提供一个文件过滤方式(搜索全部文件的话用 *)。如果您忘了，’grep’会一直等着，直到该程序被中断。如果您遇到了这样的情况，按 ，然后再试。</p> <p>下面还有一些有意思的命令行参数：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>grep -i pattern files ：不区分大小写地搜索。默认情况区分大小写，
+
+grep -l pattern files ：只列出匹配的文件名，
+
+grep -L pattern files ：列出不匹配的文件名，
+
+grep -w pattern files ：只匹配整个单词，而不是字符串的一部分(如匹配’magic’，而不是’magical’)，
+
+grep -C number pattern files ：匹配的上下文分别显示[number]行，
+
+grep pattern1 | pattern2 files ：显示匹配 pattern1 或 pattern2 的行，
+例如：grep &quot;abc\|xyz&quot; testfile    表示过滤包含abc或xyz的行
+
+grep pattern1 files | grep pattern2 ：显示既匹配 pattern1 又匹配 pattern2 的行。
+
+grep -n pattern files  即可显示行号信息
+
+grep -c pattern files  即可查找总行数
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>这里还有些用于搜索的特殊符号：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>\&lt; 和 \&gt; 分别标注单词的开始与结尾。
+例如：
+grep man * 会匹配 ‘Batman’、’manic’、’man’等，
+grep ‘\&lt;man’ * 匹配’manic’和’man’，但不是’Batman’，
+grep ‘\&lt;man\&gt;’ 只匹配’man’，而不是’Batman’或’manic’等其他的字符串。
+‘^’：指匹配的字符串在行首，
+‘$’：指匹配的字符串在行尾，
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="二、-sed"><a href="#二、-sed" class="header-anchor">#</a> 二、 sed</h3> <p>Linux sed 命令是利用脚本来处理文本文件。</p> <p>sed 可依照脚本的指令来处理、编辑文本文件。</p> <p>Sed 主要用来自动编辑一个或多个文件、简化对文件的反复操作、编写转换程序等。</p> <p><strong>参数说明：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>-e&lt;script&gt;或--expression=&lt;script&gt; 以选项中指定的script来处理输入的文本文件。
+-f&lt;script文件&gt;或--file=&lt;script文件&gt; 以选项中指定的script文件来处理输入的文本文件。
+-h或--help 显示帮助。
+-n或--quiet或--silent 仅显示script处理后的结果。
+-V或--version 显示版本信息。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p><strong>动作说明：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>a ：新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～
+c ：取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！
+d ：删除，因为是删除啊，所以 d 后面通常不接任何咚咚；
+i ：插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；
+p ：打印，亦即将某个选择的数据印出。通常 p 会与参数 sed -n 一起运行～
+s ：取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p><strong>实例</strong></p> <p><strong>注意：sed -e是修改输出终端，sed -i才是在源文件修改！！！</strong></p> <p><strong>实操案例：</strong></p> <p><strong>#1.sed -e 与sed -i</strong></p> <p>在testfile文件的第四行后添加一行，并将结果输出到标准输出，在命令行提示符下输入如下命令：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sed -e 4a\newLine testfile 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>首先查看testfile中的内容如下： cat testfile #查看testfile 中的内容</p> <p>自己vim testfile文件将下列内容输入做测试用。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>HELLO LINUX!  Linux is a free unix-type opterating system.  
+This is a linux testfile! 
+Linux test 
+Are you ok
+
+You is pig
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>使用sed命令后，输出结果如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>nl /etc/passwd | sed '2i drink tea' 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>将第2-5行的内容取代成为No 2-5 number:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>nl /etc/passwd | sed '2,5c No 2-5 number' 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><strong>#2. sed -s  替换</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>把is 换成are：
+sed 's/is/are/g' testfile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p><strong>#3.sed -d  删除</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$删除头三行:
+sed '1,3d' testfile
+$删除包含pig的行:
+sed '\%pig%d' testfile
+$删除所有空白行
+sed '/^$/d' testfile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p><strong>#sed -n</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>显示5-10行:
+sed -n '5,10p'  testfile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="三、-awk"><a href="#三、-awk" class="header-anchor">#</a> 三、 awk</h3> <p>​	<strong>这里我们介绍一下<strong><strong>awk</strong></strong>实用用法</strong>**，**<strong>更加详细参考下面链接文档</strong></p> <p>https://www.cnblogs.com/ginvip/p/6352157.html</p> <p>​	AWK是一种处理文本文件的语言，是一个强大的文本分析工具。</p> <p>之所以叫AWK是因为其取了三位创始人 Alfred Aho，Peter Weinberger, 和 Brian Kernighan 的 Family Name 的首字符。</p> <p>语法</p> <p><strong>选项参数说明：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>-F fs or --field-separator fs
+指定输入文件折分隔符，fs是一个字符串或者是一个正则表达式，如-F:。
+
+-v var=value or --asign var=value
+赋值一个用户定义变量。
+
+-f scripfile or --file scriptfile
+从脚本文件中读取awk命令。
+
+-mf nnn and -mr nnn
+对nnn值设置内在限制，-mf选项限制分配给nnn的最大块数目；-mr选项限制记录的最大数目。这两个功能是Bell实验室版awk的扩展功能，在标准awk中不适用。
+
+-W compact or --compat, -W traditional or --traditional
+在兼容模式下运行awk。所以gawk的行为和标准的awk完全一样，所有的awk扩展都被忽略。
+
+-W copyleft or --copyleft, -W copyright or --copyright
+打印简短的版权信息。
+
+-W help or --help, -W usage or --usage
+打印全部awk选项和每个选项的简短说明。
+
+-W lint or --lint
+打印不能向传统unix平台移植的结构的警告。
+
+-W lint-old or --lint-old
+打印关于不能向传统unix平台移植的结构的警告。
+
+-W posix
+打开兼容模式。但有以下限制，不识别：/x、函数关键字、func、换码序列以及当fs是一个空格时，将新行作为一个域分隔符；操作符**和**=不能代替^和^=；fflush无效。
+
+-W re-interval or --re-inerval
+允许间隔正则表达式的使用，参考(grep中的Posix字符类)，如括号表达式[[:alpha:]]。
+
+-W source program-text or --source program-text
+使用program-text作为源代码，可与-f命令混用。
+
+-W version or --version
+打印bug报告信息的版本。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div><p><strong>基本用法</strong></p> <p>log.txt文本内容如下：</p> <p>自己vim log.txt,将下面文件输入做测试。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>2 this is a test3 Are you like awkThis's a test
+10 There are orange,apple,mongo
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p><strong>用法一：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>awk '{[pattern] action}' {filenames}   # 行匹配语句 awk '' 只能用单引号
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>实例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 每行按空格或TAB分割，输出文本中的1、4项
+ $ awk '{print $1,$4}' log.txt
+#从文件中找出长度大于8的行
+awk 'length&gt;8' log.txt
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p><strong>用法二：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>awk -F  #-F相当于内置变量FS, 指定分割字符
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>实例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 使用&quot;,&quot;分割
+ $  awk -F, '{print $1,$2}'   log.txt
+# 使用多个分隔符.先使用空格分割，然后对分割结果再使用&quot;,&quot;分割
+ $ awk -F '[ ,]'  '{print $1,$2,$5}'   log.txt
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p><strong>用法三：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>awk -v  # 设置变量
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>实例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>#设置变量a,并赋值=1，打印第一列和第一列加变量a的值 
+$ awk -va=1 '{print $1,$1+a}' log.txt
+#设置两个变量a=1和b=2，并赋值打印第一列，第一列+a,第一列+b的值：
+$ awk -va=1 -vb=2 '{print $1,$1+a,$1b}' log.txt
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p><strong>用法四：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>awk -f {awk脚本} {文件名}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>实例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> $ awk -f cal.awk log.txt
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><strong>运算符</strong></p> <table><thead><tr><th><strong>运算符</strong></th> <th><strong>描述</strong></th></tr></thead> <tbody><tr><td>= += -= *= /= %= ^= **=</td> <td>赋值</td></tr> <tr><td>?:</td> <td>C条件表达式</td></tr> <tr><td>||</td> <td>逻辑或</td></tr> <tr><td>&amp;&amp;</td> <td>逻辑与</td></tr> <tr><td>~ 和 !~</td> <td>匹配正则表达式和不匹配正则表达式</td></tr> <tr><td>&lt; &lt;= &gt; &gt;= != ==</td> <td>关系运算符</td></tr> <tr><td>空格</td> <td>连接</td></tr> <tr><td>+ -</td> <td>加，减</td></tr> <tr><td>* / %</td> <td>乘，除与求余</td></tr> <tr><td>+ - !</td> <td>一元加，减和逻辑非</td></tr> <tr><td>^ **</td> <td>求幂</td></tr> <tr><td>++ --</td> <td>增加或减少，作为前缀或后缀</td></tr> <tr><td>$</td> <td>字段引用</td></tr> <tr><td>in</td> <td>数组成员</td></tr></tbody></table> <div class="language- line-numbers-mode"><pre class="language-text"><code>#过滤第一列大于2的行
+$ awk '$1&gt;2' log.txt    
+#过滤第一列等于2的行
+$ awk '$1==2 {print $1,$3}' log.txt  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>内建变量</p> <table><thead><tr><th><strong>变量</strong></th> <th><strong>描述</strong></th></tr></thead> <tbody><tr><td>$n</td> <td>当前记录的第n个字段，字段间由FS分隔</td></tr> <tr><td>$0</td> <td>完整的输入记录</td></tr> <tr><td>ARGC</td> <td>命令行参数的数目</td></tr> <tr><td>ARGIND</td> <td>命令行中当前文件的位置(从0开始算)</td></tr> <tr><td>ARGV</td> <td>包含命令行参数的数组</td></tr> <tr><td>CONVFMT</td> <td>数字转换格式(默认值为%.6g)ENVIRON环境变量关联数组</td></tr> <tr><td>ERRNO</td> <td>最后一个系统错误的描述</td></tr> <tr><td>FIELDWIDTHS</td> <td>字段宽度列表(用空格键分隔)</td></tr> <tr><td>FILENAME</td> <td>当前文件名</td></tr> <tr><td>FNR</td> <td>各文件分别计数的行号</td></tr> <tr><td>FS</td> <td>字段分隔符(默认是任何空格)</td></tr> <tr><td>IGNORECASE</td> <td>如果为真，则进行忽略大小写的匹配</td></tr> <tr><td>NF</td> <td>一条记录的字段的数目</td></tr> <tr><td>NR</td> <td>已经读出的记录数，就是行号，从1开始</td></tr> <tr><td>OFMT</td> <td>数字的输出格式(默认值是%.6g)</td></tr> <tr><td>OFS</td> <td>输出记录分隔符（输出换行符），输出时用指定的符号代替换行符</td></tr> <tr><td>ORS</td> <td>输出记录分隔符(默认值是一个换行符)</td></tr> <tr><td>RLENGTH</td> <td>由match函数所匹配的字符串的长度</td></tr> <tr><td>RS</td> <td>记录分隔符(默认是一个换行符)</td></tr> <tr><td>RSTART</td> <td>由match函数所匹配的字符串的第一个位置</td></tr> <tr><td>SUBSEP</td> <td>数组下标分隔符(默认值是/034)</td></tr></tbody></table> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ awk 'BEGIN{printf &quot;%4s %4s %4s %4s %4s %4s %4s %4s %4s\n&quot;,&quot;FILENAME&quot;,&quot;ARGC&quot;,&quot;FNR&quot;,&quot;FS&quot;,&quot;NF&quot;,&quot;NR&quot;,&quot;OFS&quot;,&quot;ORS&quot;,&quot;RS&quot;;printf &quot;---------------------------------------------\n&quot;} {printf &quot;%4s %4s %4s %4s %4s %4s %4s %4s %4s\n&quot;,FILENAME,ARGC,FNR,FS,NF,NR,OFS,ORS,RS}'  log.txt
+FILENAME ARGC  FNR   FS   NF   NR  OFS  ORS   RS---------------------------------------------
+log.txt    2    1         5    1
+log.txt    2    2         5    2
+log.txt    2    3         3    3
+log.txt    2    4         4    4
+$ awk -F\' 'BEGIN{printf &quot;%4s %4s %4s %4s %4s %4s %4s %4s %4s\n&quot;,&quot;FILENAME&quot;,&quot;ARGC&quot;,&quot;FNR&quot;,&quot;FS&quot;,&quot;NF&quot;,&quot;NR&quot;,&quot;OFS&quot;,&quot;ORS&quot;,&quot;RS&quot;;printf &quot;---------------------------------------------\n&quot;} {printf &quot;%4s %4s %4s %4s %4s %4s %4s %4s %4s\n&quot;,FILENAME,ARGC,FNR,FS,NF,NR,OFS,ORS,RS}'  log.txt
+FILENAME ARGC  FNR   FS   NF   NR  OFS  ORS   RS---------------------------------------------
+log.txt    2    1    '    1    1
+log.txt    2    2    '    1    2
+log.txt    2    3    '    2    3
+log.txt    2    4    '    1    4# 输出顺序号 NR, 匹配文本行号
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p><strong>使用正则，字符串匹配:</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 输出第二列包含 &quot;th&quot;，并打印第二列与第四列
+$ awk '$2 ~ /th/ {print $2,$4}' log.txt
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间: </span> <span class="time">2021/6/23 下午6:06:33</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/blogs/Others/Linux/" class="prev router-link-active">
+            Linux常用基本命令
+          </a></span> <span class="next"><a href="/blogs/Others/Linux/ShellProgram.html">
+            Shell编程
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-70334359><li class="level-2" data-v-70334359><a href="/blogs/Others/Linux/LinuxThreeTool.html#linux三剑客grep、awk、sed" class="sidebar-link reco-side-linux三剑客grep、awk、sed" data-v-70334359>Linux三剑客grep、awk、sed</a></li><li class="level-3" data-v-70334359><a href="/blogs/Others/Linux/LinuxThreeTool.html#一、-grep" class="sidebar-link reco-side-一、-grep" data-v-70334359>一、 grep</a></li><li class="level-3" data-v-70334359><a href="/blogs/Others/Linux/LinuxThreeTool.html#二、-sed" class="sidebar-link reco-side-二、-sed" data-v-70334359>二、 sed</a></li><li class="level-3" data-v-70334359><a href="/blogs/Others/Linux/LinuxThreeTool.html#三、-awk" class="sidebar-link reco-side-三、-awk" data-v-70334359>三、 awk</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><canvas id="vuepress-canvas-cursor"></canvas><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="left:88px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 iChensw Blog
+    </div> <div class="operation" style="left:148px;bottom:40px;display:;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="left:30px;bottom:-20px;opacity:0.9;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div><div></div><!----><!----></div></div>
+    <script src="/assets/js/app.32f0200a.js" defer></script><script src="/assets/js/3.11fa7831.js" defer></script><script src="/assets/js/1.13c24760.js" defer></script><script src="/assets/js/17.4280d8a5.js" defer></script><script src="/assets/js/8.ff5ef1e6.js" defer></script>
+  </body>
+</html>

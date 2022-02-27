@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>访问者模式 | iChensw Blog</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;display=swap">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="向热爱生命一样热爱编程">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.b90962b5.css" as="style"><link rel="preload" href="/assets/js/app.32f0200a.js" as="script"><link rel="preload" href="/assets/js/3.11fa7831.js" as="script"><link rel="preload" href="/assets/js/1.13c24760.js" as="script"><link rel="preload" href="/assets/js/29.1d173b34.js" as="script"><link rel="preload" href="/assets/js/8.ff5ef1e6.js" as="script"><link rel="prefetch" href="/assets/js/10.52308f05.js"><link rel="prefetch" href="/assets/js/11.ebb31795.js"><link rel="prefetch" href="/assets/js/12.69ba3e33.js"><link rel="prefetch" href="/assets/js/13.595f2685.js"><link rel="prefetch" href="/assets/js/14.bbd2e07a.js"><link rel="prefetch" href="/assets/js/15.f62abb6c.js"><link rel="prefetch" href="/assets/js/16.62ada990.js"><link rel="prefetch" href="/assets/js/17.4280d8a5.js"><link rel="prefetch" href="/assets/js/18.6504af8d.js"><link rel="prefetch" href="/assets/js/19.fa663238.js"><link rel="prefetch" href="/assets/js/20.cc36479b.js"><link rel="prefetch" href="/assets/js/21.363ad1de.js"><link rel="prefetch" href="/assets/js/22.51091fd6.js"><link rel="prefetch" href="/assets/js/23.a59cf5c6.js"><link rel="prefetch" href="/assets/js/24.282452d1.js"><link rel="prefetch" href="/assets/js/25.42df6437.js"><link rel="prefetch" href="/assets/js/26.799c5605.js"><link rel="prefetch" href="/assets/js/27.848ed941.js"><link rel="prefetch" href="/assets/js/28.d6baeb18.js"><link rel="prefetch" href="/assets/js/30.d1f0e67e.js"><link rel="prefetch" href="/assets/js/31.c1ccabc1.js"><link rel="prefetch" href="/assets/js/32.5a504340.js"><link rel="prefetch" href="/assets/js/33.c0d5f5a3.js"><link rel="prefetch" href="/assets/js/34.2658657b.js"><link rel="prefetch" href="/assets/js/35.ed764893.js"><link rel="prefetch" href="/assets/js/36.c9844134.js"><link rel="prefetch" href="/assets/js/37.1e2b3f0d.js"><link rel="prefetch" href="/assets/js/38.ba2a0106.js"><link rel="prefetch" href="/assets/js/39.1e8d873d.js"><link rel="prefetch" href="/assets/js/4.5fc380ce.js"><link rel="prefetch" href="/assets/js/40.363024e6.js"><link rel="prefetch" href="/assets/js/41.b3ae1b56.js"><link rel="prefetch" href="/assets/js/42.5334a5f9.js"><link rel="prefetch" href="/assets/js/43.104f717d.js"><link rel="prefetch" href="/assets/js/44.41c015b7.js"><link rel="prefetch" href="/assets/js/45.75e8ea79.js"><link rel="prefetch" href="/assets/js/46.22b081a0.js"><link rel="prefetch" href="/assets/js/47.a75b13e9.js"><link rel="prefetch" href="/assets/js/48.8970f89f.js"><link rel="prefetch" href="/assets/js/49.762713b5.js"><link rel="prefetch" href="/assets/js/5.58534446.js"><link rel="prefetch" href="/assets/js/50.a24a2a7e.js"><link rel="prefetch" href="/assets/js/51.e2d14605.js"><link rel="prefetch" href="/assets/js/52.1bd7e25f.js"><link rel="prefetch" href="/assets/js/53.07fabbc5.js"><link rel="prefetch" href="/assets/js/54.bd025209.js"><link rel="prefetch" href="/assets/js/55.71b636da.js"><link rel="prefetch" href="/assets/js/56.e4473e39.js"><link rel="prefetch" href="/assets/js/57.7ffad7e3.js"><link rel="prefetch" href="/assets/js/58.c39bca93.js"><link rel="prefetch" href="/assets/js/59.294c5981.js"><link rel="prefetch" href="/assets/js/6.48d28dd5.js"><link rel="prefetch" href="/assets/js/60.87c7543c.js"><link rel="prefetch" href="/assets/js/61.595b4375.js"><link rel="prefetch" href="/assets/js/62.94e6a410.js"><link rel="prefetch" href="/assets/js/7.4aa26877.js"><link rel="prefetch" href="/assets/js/9.e1e6e1f9.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b90962b5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1156296a><div data-v-1156296a><div id="loader-wrapper" class="loading-wrapper" data-v-e60bdfd0 data-v-1156296a data-v-1156296a><dl id="loading-tpl" data-v-e60bdfd0><div id="loading-contain" data-v-e60bdfd0><div id="loading-wrap1" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball1" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap2" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball2" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap3" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball3" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap4" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball4" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap5" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball5" class="loading-ball" data-v-e60bdfd0></div></div></div></dl> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4e82dffc data-v-1156296a data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>iChensw Blog</h3> <p class="description" data-v-4e82dffc data-v-4e82dffc>向热爱生命一样热爱编程</p> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>一条鱼</span>
+            
+          <span data-v-4e82dffc>2021 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1156296a><header class="navbar" data-v-1156296a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/avatar.jpg" alt="iChensw Blog" class="logo"> <span class="site-name">iChensw Blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Web/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Web/ES6/" class="nav-link"><i class="undefined"></i>
+  ES6
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      后端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Storage/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring全家桶
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Dubbo/" class="nav-link"><i class="undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis Plus
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/JavaQuestion/" class="nav-link"><i class="undefined"></i>
+  Java基础补充
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/Base/DesignPattern/" class="nav-link router-link-active"><i class="undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/ElasticSearch/" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      服务器
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Others/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Others/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Documents/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/InterviewQuestion/" class="nav-link"><i class="undefined"></i>
+  面试题
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1156296a></div> <aside class="sidebar" data-v-1156296a><div class="personal-info-wrapper" data-v-828910c6 data-v-1156296a><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-828910c6> <h3 class="name" data-v-828910c6>
+    一条鱼
+  </h3> <div class="num" data-v-828910c6><div data-v-828910c6><h3 data-v-828910c6>50</h3> <h6 data-v-828910c6>文章</h6></div> <div data-v-828910c6><h3 data-v-828910c6>34</h3> <h6 data-v-828910c6>标签</h6></div></div> <ul class="social-links" data-v-828910c6></ul> <hr data-v-828910c6></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Web/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Web/ES6/" class="nav-link"><i class="undefined"></i>
+  ES6
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      后端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Storage/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring全家桶
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Dubbo/" class="nav-link"><i class="undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis Plus
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/JavaQuestion/" class="nav-link"><i class="undefined"></i>
+  Java基础补充
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/Base/DesignPattern/" class="nav-link router-link-active"><i class="undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/ElasticSearch/" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      服务器
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Others/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Others/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Documents/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/InterviewQuestion/" class="nav-link"><i class="undefined"></i>
+  面试题
+</a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>设计模式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blogs/Storage/Java/Base/DesignPattern/" aria-current="page" class="sidebar-link">命令模式</a></li><li><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html" aria-current="page" class="active sidebar-link">访问者模式</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4e82dffc data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>访问者模式</h3> <!----> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>一条鱼</span>
+            
+          <span data-v-4e82dffc>2021 - </span>
+          2022
+        </a></span></div></div> <div data-v-1156296a><main class="page"><section><div class="page-title"><h1 class="title">访问者模式</h1> <div data-v-1ff7123e><i class="iconfont reco-account" data-v-1ff7123e><span data-v-1ff7123e>一条鱼</span></i> <i class="iconfont reco-date" data-v-1ff7123e><span data-v-1ff7123e>2021/7/25</span></i> <i class="iconfont reco-eye" data-v-1ff7123e><span id="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-1ff7123e><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont reco-tag" data-v-1ff7123e><span class="tag-item" data-v-1ff7123e>DesignPattern</span><span class="tag-item" data-v-1ff7123e>VisitorPattern</span></i></div></div> <div class="theme-reco-content content__default"><h1 id="访问者模式"><a href="#访问者模式" class="header-anchor">#</a> 访问者模式</h1> <h2 id="案例演示"><a href="#案例演示" class="header-anchor">#</a> 案例演示</h2> <p>现在有这样一个需求，把公司中的所有人员信息都打印汇报上去，公司组织架构示例如下</p> <p><img src="https://gitee.com/ichensw/drawing-bed/raw/master/image/v3.png" alt=""></p> <h3 id="解决方案一-模板模式实现"><a href="#解决方案一-模板模式实现" class="header-anchor">#</a> 解决方案一：模板模式实现</h3> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">/**
+* @Classname Employee
+* @Created by 寂然
+* @Description 抽象的员工类
+*/</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Employee</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> sex<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">int</span> MALE <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token comment">//0代表男性</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">int</span> FEMALE <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token comment">//1代表女性</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> salary<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getSex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> sex<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setSex</span><span class="token punctuation">(</span><span class="token keyword">int</span> sex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>sex <span class="token operator">=</span> sex<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getSalary</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> salary<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setSalary</span><span class="token punctuation">(</span><span class="token keyword">int</span> salary<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>salary <span class="token operator">=</span> salary<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//打印的方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">report</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//首先获得员工的基本信息</span>
+        <span class="token class-name">String</span> info <span class="token operator">=</span> <span class="token string">&quot;姓名：&quot;</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">;</span>
+        info <span class="token operator">=</span> info <span class="token operator">+</span> <span class="token string">&quot;性别：&quot;</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>sex <span class="token operator">==</span> FEMALE<span class="token operator">?</span><span class="token string">&quot;女&quot;</span><span class="token operator">:</span><span class="token string">&quot;男&quot;</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">;</span>
+        info <span class="token operator">=</span> info <span class="token operator">+</span> <span class="token string">&quot;薪水：&quot;</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>salary <span class="token operator">+</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">;</span>
+        <span class="token comment">//获得员工的其他信息</span>
+        info <span class="token operator">=</span> info <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getOtherInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//拼装员工其他信息的方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token class-name">String</span> <span class="token function">getOtherInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+* @Classname CommonEmployee
+* @Created by 寂然
+* @Description 普通员工类
+*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CommonEmployee</span> <span class="token keyword">extends</span> <span class="token class-name">Employee</span><span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> job<span class="token punctuation">;</span><span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getJob</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> job<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setJob</span><span class="token punctuation">(</span><span class="token class-name">String</span> job<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>job <span class="token operator">=</span> job<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getOtherInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;工作：&quot;</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>job <span class="token operator">+</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+* @Classname Manager
+* @Created by 寂然
+* @Description 管理人员
+*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Manager</span> <span class="token keyword">extends</span> <span class="token class-name">Employee</span><span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> performance<span class="token punctuation">;</span><span class="token comment">//业绩</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getPerformance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> performance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setPerformance</span><span class="token punctuation">(</span><span class="token class-name">String</span> performance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>performance <span class="token operator">=</span> performance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getOtherInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;业绩：&quot;</span><span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>performance <span class="token operator">+</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+* @Classname Client
+* @Created by 寂然
+* @Description 客户端
+*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//待会在main方法里打印</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> employees <span class="token operator">=</span> <span class="token function">mockEmployee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Employee</span> employee <span class="token operator">:</span> employees<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            employee<span class="token punctuation">.</span><span class="token function">report</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//需要一个模拟员工的方法，模拟出公司的人员情况</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> <span class="token function">mockEmployee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//先创建一个员工的集合</span>
+        <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> employees <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//员工胖虎</span>
+        <span class="token class-name">CommonEmployee</span> panghu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CommonEmployee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        panghu<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">&quot;胖虎&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        panghu<span class="token punctuation">.</span><span class="token function">setSalary</span><span class="token punctuation">(</span><span class="token number">7000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        panghu<span class="token punctuation">.</span><span class="token function">setSex</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        panghu<span class="token punctuation">.</span><span class="token function">setJob</span><span class="token punctuation">(</span><span class="token string">&quot;Java后台开发，CRUD工程师&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        employees<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>panghu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//员工小夫</span>
+        <span class="token class-name">CommonEmployee</span> xiaofu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CommonEmployee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaofu<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">&quot;小夫&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaofu<span class="token punctuation">.</span><span class="token function">setSalary</span><span class="token punctuation">(</span><span class="token number">6000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaofu<span class="token punctuation">.</span><span class="token function">setSex</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaofu<span class="token punctuation">.</span><span class="token function">setJob</span><span class="token punctuation">(</span><span class="token string">&quot;前端开发，复制粘贴小能手&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        employees<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>xiaofu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//经理蟹老板</span>
+        <span class="token class-name">Manager</span> manager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Manager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        manager<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">&quot;蟹老板&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        manager<span class="token punctuation">.</span><span class="token function">setSalary</span><span class="token punctuation">(</span><span class="token number">13000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        manager<span class="token punctuation">.</span><span class="token function">setSex</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        manager<span class="token punctuation">.</span><span class="token function">setPerformance</span><span class="token punctuation">(</span><span class="token string">&quot;月月亏损，快顶不住了&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        employees<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>manager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> employees<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br></div></div><p>现在有这样的问题出现：</p> <p>​	大boss只关心部门领导的业绩或者说信息，不关心普通员工的，但是现在没办法分析，多个大boss可能关心的领域不同</p> <hr> <h3 id="解决方案二-访问的思想"><a href="#解决方案二-访问的思想" class="header-anchor">#</a> 解决方案二：访问的思想</h3> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 16:36
+ * @Description 访问者接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IVisitor</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/**
+     * 定义普通员工方法
+     * @param commonEmployee
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">visitor</span><span class="token punctuation">(</span><span class="token class-name">CommonEmployee</span> commonEmployee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * 定义管理人员方法
+     * @param manager
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">visitor</span><span class="token punctuation">(</span><span class="token class-name">Manager</span> manager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 16:21
+ * @Description 员工接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Employee</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/**0代表男性*/</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">int</span> MALE <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">/**1代表女性*/</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">int</span> FEMALE <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> sex<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> salary<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getSex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> sex<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setSex</span><span class="token punctuation">(</span><span class="token keyword">int</span> sex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>sex <span class="token operator">=</span> sex<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getSalary</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> salary<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setSalary</span><span class="token punctuation">(</span><span class="token keyword">int</span> salary<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>salary <span class="token operator">=</span> salary<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">accept</span><span class="token punctuation">(</span><span class="token class-name">IVisitor</span> iVisitor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 16:27
+ * @Description 普通员工类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CommonEmployee</span> <span class="token keyword">extends</span> <span class="token class-name">Employee</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> job<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getJob</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> job<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setJob</span><span class="token punctuation">(</span><span class="token class-name">String</span> job<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>job <span class="token operator">=</span> job<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">accept</span><span class="token punctuation">(</span><span class="token class-name">IVisitor</span> iVisitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        iVisitor<span class="token punctuation">.</span><span class="token function">visitor</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 16:25
+ * @Description 经理类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Manager</span> <span class="token keyword">extends</span> <span class="token class-name">Employee</span> <span class="token punctuation">{</span>
+    <span class="token comment">/**业绩*/</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> performance<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getPerformance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> performance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setPerformance</span><span class="token punctuation">(</span><span class="token class-name">String</span> performance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>performance <span class="token operator">=</span> performance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">accept</span><span class="token punctuation">(</span><span class="token class-name">IVisitor</span> iVisitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        iVisitor<span class="token punctuation">.</span><span class="token function">visitor</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 16:39
+ * @Description 访问者操作对象
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Visitor</span> <span class="token keyword">implements</span> <span class="token class-name">IVisitor</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">visitor</span><span class="token punctuation">(</span><span class="token class-name">CommonEmployee</span> commonEmployee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">getCommonEmployeeInfo</span><span class="token punctuation">(</span>commonEmployee<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">visitor</span><span class="token punctuation">(</span><span class="token class-name">Manager</span> manager<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">getMangerInfo</span><span class="token punctuation">(</span>manager<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 打印汇总员工信息
+     * @param employee
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getBaseInfo</span><span class="token punctuation">(</span><span class="token class-name">Employee</span> employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 获取员工基本信息</span>
+        <span class="token class-name">String</span> info <span class="token operator">=</span> <span class="token string">&quot;姓名：&quot;</span> <span class="token operator">+</span> employee<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">;</span>
+        info <span class="token operator">+=</span> <span class="token string">&quot;性别：&quot;</span> <span class="token operator">+</span> <span class="token punctuation">(</span>employee<span class="token punctuation">.</span><span class="token function">getSex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token string">&quot;男&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;女&quot;</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">;</span>
+        info <span class="token operator">+=</span> <span class="token string">&quot;薪水：&quot;</span> <span class="token operator">+</span> employee<span class="token punctuation">.</span><span class="token function">getSalary</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> info<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 打印管理人员信息的方法
+     * @param manager
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getMangerInfo</span><span class="token punctuation">(</span><span class="token class-name">Manager</span> manager<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">String</span> info <span class="token operator">=</span> <span class="token string">&quot;业绩：&quot;</span> <span class="token operator">+</span> manager<span class="token punctuation">.</span><span class="token function">getPerformance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">getBaseInfo</span><span class="token punctuation">(</span>manager<span class="token punctuation">)</span> <span class="token operator">+</span> info<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 打印普通员工信息的方法
+     * @param commonEmployee
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getCommonEmployeeInfo</span><span class="token punctuation">(</span><span class="token class-name">CommonEmployee</span> commonEmployee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">String</span> info <span class="token operator">=</span> <span class="token string">&quot;工作：&quot;</span> <span class="token operator">+</span> commonEmployee<span class="token punctuation">.</span><span class="token function">getJob</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">getBaseInfo</span><span class="token punctuation">(</span>commonEmployee<span class="token punctuation">)</span> <span class="token operator">+</span> info<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 16:27
+ * @Description
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> employeeList <span class="token operator">=</span> <span class="token function">mockEmployee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Employee</span> employee <span class="token operator">:</span> employeeList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">//            employee.report();</span>
+            employee<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Visitor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> <span class="token function">mockEmployee</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> employeeList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">CommonEmployee</span> panghu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CommonEmployee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        panghu<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">&quot;胖虎&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        panghu<span class="token punctuation">.</span><span class="token function">setSex</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        panghu<span class="token punctuation">.</span><span class="token function">setSalary</span><span class="token punctuation">(</span><span class="token number">7000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        panghu<span class="token punctuation">.</span><span class="token function">setJob</span><span class="token punctuation">(</span><span class="token string">&quot;Java开发工程师，CRUD工程师&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        employeeList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>panghu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">CommonEmployee</span> xiaofu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CommonEmployee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaofu<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">&quot;小夫&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaofu<span class="token punctuation">.</span><span class="token function">setSex</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaofu<span class="token punctuation">.</span><span class="token function">setSalary</span><span class="token punctuation">(</span><span class="token number">8000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaofu<span class="token punctuation">.</span><span class="token function">setJob</span><span class="token punctuation">(</span><span class="token string">&quot;前端开发工程师，CV工程师&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        employeeList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>xiaofu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Manager</span> dahua <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Manager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dahua<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">&quot;大华&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dahua<span class="token punctuation">.</span><span class="token function">setSex</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dahua<span class="token punctuation">.</span><span class="token function">setSalary</span><span class="token punctuation">(</span><span class="token number">15000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dahua<span class="token punctuation">.</span><span class="token function">setPerformance</span><span class="token punctuation">(</span><span class="token string">&quot;月月亏损，迟早破产&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        employeeList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>dahua<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> employeeList<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br></div></div><p>一起分析下这个程序的实现：</p> <ul><li>通过循环遍历所有元素</li> <li>每一个员工对象都定义了一个访问者</li> <li>员工对象把自己作为一个参数调用访问者的visit方法</li> <li>访问者调用自己内部的计算逻辑完成报表的打印</li> <li>客户端调用方法，完成报表数据的打印</li></ul> <hr> <h2 id="基本介绍"><a href="#基本介绍" class="header-anchor">#</a> 基本介绍</h2> <h3 id="访问者模式的概念"><a href="#访问者模式的概念" class="header-anchor">#</a> 访问者模式的概念</h3> <blockquote><p>访问者模式（Visitor pattern）封装了一些作用于某种数据结构的各元素的操作，它可以再不改变数据结构的前提下，定义作用于这些元素的新的操作，主要是将数据结构和数据操作分离</p></blockquote> <h3 id="原理类图"><a href="#原理类图" class="header-anchor">#</a> 原理类图</h3> <hr> <p><img src="https://gitee.com/ichensw/drawing-bed/raw/master/image/v1.png" alt="v1"></p> <h3 id="角色分析"><a href="#角色分析" class="header-anchor">#</a> 角色分析</h3> <ul><li>Visitor ：抽象类或者接口，声明访问者可以访问哪些元素</li> <li>ConcreteVisitor :具体的访问者，他会具体实现访问者访问到一个类后该怎么说，具体的业务逻辑</li> <li>Element ：抽象的被访问者，声明接收哪一类访问者的访问</li> <li>ConcreteElement ：具体的被访问者，具体实现业务逻辑</li> <li>ObjectStructure ：元素的产生者，数据结构，一般是一个容纳多个类/接口的容器。</li></ul> <h2 id="案例演示-中国好嗓门"><a href="#案例演示-中国好嗓门" class="header-anchor">#</a> 案例演示 - 中国好嗓门</h2> <blockquote><p>现在有一档综艺节目 - 中国好嗓门，观众有场内观众和场外观众，每位歌手表演完毕观众都会对该歌手的表演进行投票（晋级/淘汰）将评价进行反馈，根据上述要求，完成测评系统的编码</p></blockquote> <h3 id="解决方案一-默认实现"><a href="#解决方案一-默认实现" class="header-anchor">#</a> 解决方案一：默认实现</h3> <p>​	通过编写多个类，进行if，else判断，每次增加功能时，都需要修改判断。</p> <h3 id="解决方案二-访问者模式"><a href="#解决方案二-访问者模式" class="header-anchor">#</a> 解决方案二：访问者模式</h3> <h4 id="原理类图-2"><a href="#原理类图-2" class="header-anchor">#</a> 原理类图</h4> <hr> <p><img src="https://gitee.com/ichensw/drawing-bed/raw/master/image/v2.png" alt="v2"></p> <h4 id="代码演示"><a href="#代码演示" class="header-anchor">#</a> 代码演示</h4> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 17:07
+ * @Description 抽象的访问者对象
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Action</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/**
+     * 得到场内观众的评测结果
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">getInnerResult</span><span class="token punctuation">(</span><span class="token class-name">InnerAudience</span> innerAudience<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * 得到场外观众的评测结果
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">getOuterResult</span><span class="token punctuation">(</span><span class="token class-name">OuterAudience</span> outerAudience<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 17:06
+ * @Description 抽象的观众
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Audience</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/**
+     * 提供一个方法，供访问者访问
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">accept</span><span class="token punctuation">(</span><span class="token class-name">Action</span> action<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 17:09
+ * @Description
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">InnerAudience</span> <span class="token keyword">extends</span> <span class="token class-name">Audience</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">accept</span><span class="token punctuation">(</span><span class="token class-name">Action</span> action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        action<span class="token punctuation">.</span><span class="token function">getInnerResult</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 17:09
+ * @Description
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OuterAudience</span> <span class="token keyword">extends</span> <span class="token class-name">Audience</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">accept</span><span class="token punctuation">(</span><span class="token class-name">Action</span> action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        action<span class="token punctuation">.</span><span class="token function">getOuterResult</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 17:12
+ * @Description  数据结构，管理众多观众
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ObjectStructure</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/**
+     * 维护一个集合
+     */</span>
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Audience</span><span class="token punctuation">&gt;</span></span> audienceList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * 添加一个观众
+     * @param audience
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">Audience</span> audience<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        audienceList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>audience<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 删除一个观众
+     * @param audience
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token class-name">Audience</span> audience<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        audienceList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>audience<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 显示测评结果
+     * @param action
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token class-name">Action</span> action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Audience</span> audience <span class="token operator">:</span> audienceList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            audience<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 17:10
+ * @Description 晋级操作
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Success</span> <span class="token keyword">extends</span> <span class="token class-name">Action</span><span class="token punctuation">{</span>
+
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">getInnerResult</span><span class="token punctuation">(</span><span class="token class-name">InnerAudience</span> innerAudience<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;场内观众给的评价是晋级&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">getOuterResult</span><span class="token punctuation">(</span><span class="token class-name">OuterAudience</span> outerAudience<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;场外观众给的评价是晋级&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 17:11
+ * @Description 淘汰操作
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Fail</span> <span class="token keyword">extends</span> <span class="token class-name">Action</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">getInnerResult</span><span class="token punctuation">(</span><span class="token class-name">InnerAudience</span> innerAudience<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;场内观众给出的结果是淘汰&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">getOuterResult</span><span class="token punctuation">(</span><span class="token class-name">OuterAudience</span> outerAudience<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;场外观众给出的结果是淘汰&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * @author 勤学苦练
+ * @date 2021/7/25 17:14
+ * @Description 测试类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token class-name">ObjectStructure</span> objectStructure <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ObjectStructure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 数据结构中添加观众</span>
+        objectStructure<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InnerAudience</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        objectStructure<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">OuterAudience</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 数据结构中展示观众结果</span>
+        objectStructure<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br></div></div><h2 id="案例扩展"><a href="#案例扩展" class="header-anchor">#</a> 案例扩展</h2> <h3 id="双分派"><a href="#双分派" class="header-anchor">#</a> 双分派</h3> <p>所谓的双分派，就是不管类怎么变化，我们都能找到期望的方法运行</p> <blockquote><p>所有设计模式的最终目的都是为了：低内聚高耦合，开闭原则</p></blockquote></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间: </span> <span class="time">2021/7/25 下午8:44:20</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/blogs/Storage/Java/Base/DesignPattern/" class="prev router-link-active">
+            命令模式
+          </a></span> <!----></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-70334359><li class="level-2" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#案例演示" class="sidebar-link reco-side-案例演示" data-v-70334359>案例演示</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#解决方案一-模板模式实现" class="sidebar-link reco-side-解决方案一-模板模式实现" data-v-70334359>解决方案一：模板模式实现</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#解决方案二-访问的思想" class="sidebar-link reco-side-解决方案二-访问的思想" data-v-70334359>解决方案二：访问的思想</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#基本介绍" class="sidebar-link reco-side-基本介绍" data-v-70334359>基本介绍</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#访问者模式的概念" class="sidebar-link reco-side-访问者模式的概念" data-v-70334359>访问者模式的概念</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#原理类图" class="sidebar-link reco-side-原理类图" data-v-70334359>原理类图</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#角色分析" class="sidebar-link reco-side-角色分析" data-v-70334359>角色分析</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#案例演示-中国好嗓门" class="sidebar-link reco-side-案例演示-中国好嗓门" data-v-70334359>案例演示 - 中国好嗓门</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#解决方案一-默认实现" class="sidebar-link reco-side-解决方案一-默认实现" data-v-70334359>解决方案一：默认实现</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#解决方案二-访问者模式" class="sidebar-link reco-side-解决方案二-访问者模式" data-v-70334359>解决方案二：访问者模式</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#案例扩展" class="sidebar-link reco-side-案例扩展" data-v-70334359>案例扩展</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/Java/Base/DesignPattern/VisitorPattern.html#双分派" class="sidebar-link reco-side-双分派" data-v-70334359>双分派</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><canvas id="vuepress-canvas-cursor"></canvas><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="left:88px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 iChensw Blog
+    </div> <div class="operation" style="left:148px;bottom:40px;display:;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="left:30px;bottom:-20px;opacity:0.9;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div><div></div><!----><!----></div></div>
+    <script src="/assets/js/app.32f0200a.js" defer></script><script src="/assets/js/3.11fa7831.js" defer></script><script src="/assets/js/1.13c24760.js" defer></script><script src="/assets/js/29.1d173b34.js" defer></script><script src="/assets/js/8.ff5ef1e6.js" defer></script>
+  </body>
+</html>

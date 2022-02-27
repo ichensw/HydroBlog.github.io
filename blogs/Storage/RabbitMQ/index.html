@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RabbitMQ基础 | iChensw Blog</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;display=swap">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="向热爱生命一样热爱编程">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.b90962b5.css" as="style"><link rel="preload" href="/assets/js/app.32f0200a.js" as="script"><link rel="preload" href="/assets/js/3.11fa7831.js" as="script"><link rel="preload" href="/assets/js/1.13c24760.js" as="script"><link rel="preload" href="/assets/js/44.41c015b7.js" as="script"><link rel="preload" href="/assets/js/8.ff5ef1e6.js" as="script"><link rel="prefetch" href="/assets/js/10.52308f05.js"><link rel="prefetch" href="/assets/js/11.ebb31795.js"><link rel="prefetch" href="/assets/js/12.69ba3e33.js"><link rel="prefetch" href="/assets/js/13.595f2685.js"><link rel="prefetch" href="/assets/js/14.bbd2e07a.js"><link rel="prefetch" href="/assets/js/15.f62abb6c.js"><link rel="prefetch" href="/assets/js/16.62ada990.js"><link rel="prefetch" href="/assets/js/17.4280d8a5.js"><link rel="prefetch" href="/assets/js/18.6504af8d.js"><link rel="prefetch" href="/assets/js/19.fa663238.js"><link rel="prefetch" href="/assets/js/20.cc36479b.js"><link rel="prefetch" href="/assets/js/21.363ad1de.js"><link rel="prefetch" href="/assets/js/22.51091fd6.js"><link rel="prefetch" href="/assets/js/23.a59cf5c6.js"><link rel="prefetch" href="/assets/js/24.282452d1.js"><link rel="prefetch" href="/assets/js/25.42df6437.js"><link rel="prefetch" href="/assets/js/26.799c5605.js"><link rel="prefetch" href="/assets/js/27.848ed941.js"><link rel="prefetch" href="/assets/js/28.d6baeb18.js"><link rel="prefetch" href="/assets/js/29.1d173b34.js"><link rel="prefetch" href="/assets/js/30.d1f0e67e.js"><link rel="prefetch" href="/assets/js/31.c1ccabc1.js"><link rel="prefetch" href="/assets/js/32.5a504340.js"><link rel="prefetch" href="/assets/js/33.c0d5f5a3.js"><link rel="prefetch" href="/assets/js/34.2658657b.js"><link rel="prefetch" href="/assets/js/35.ed764893.js"><link rel="prefetch" href="/assets/js/36.c9844134.js"><link rel="prefetch" href="/assets/js/37.1e2b3f0d.js"><link rel="prefetch" href="/assets/js/38.ba2a0106.js"><link rel="prefetch" href="/assets/js/39.1e8d873d.js"><link rel="prefetch" href="/assets/js/4.5fc380ce.js"><link rel="prefetch" href="/assets/js/40.363024e6.js"><link rel="prefetch" href="/assets/js/41.b3ae1b56.js"><link rel="prefetch" href="/assets/js/42.5334a5f9.js"><link rel="prefetch" href="/assets/js/43.104f717d.js"><link rel="prefetch" href="/assets/js/45.75e8ea79.js"><link rel="prefetch" href="/assets/js/46.22b081a0.js"><link rel="prefetch" href="/assets/js/47.a75b13e9.js"><link rel="prefetch" href="/assets/js/48.8970f89f.js"><link rel="prefetch" href="/assets/js/49.762713b5.js"><link rel="prefetch" href="/assets/js/5.58534446.js"><link rel="prefetch" href="/assets/js/50.a24a2a7e.js"><link rel="prefetch" href="/assets/js/51.e2d14605.js"><link rel="prefetch" href="/assets/js/52.1bd7e25f.js"><link rel="prefetch" href="/assets/js/53.07fabbc5.js"><link rel="prefetch" href="/assets/js/54.bd025209.js"><link rel="prefetch" href="/assets/js/55.71b636da.js"><link rel="prefetch" href="/assets/js/56.e4473e39.js"><link rel="prefetch" href="/assets/js/57.7ffad7e3.js"><link rel="prefetch" href="/assets/js/58.c39bca93.js"><link rel="prefetch" href="/assets/js/59.294c5981.js"><link rel="prefetch" href="/assets/js/6.48d28dd5.js"><link rel="prefetch" href="/assets/js/60.87c7543c.js"><link rel="prefetch" href="/assets/js/61.595b4375.js"><link rel="prefetch" href="/assets/js/62.94e6a410.js"><link rel="prefetch" href="/assets/js/7.4aa26877.js"><link rel="prefetch" href="/assets/js/9.e1e6e1f9.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b90962b5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1156296a><div data-v-1156296a><div id="loader-wrapper" class="loading-wrapper" data-v-e60bdfd0 data-v-1156296a data-v-1156296a><dl id="loading-tpl" data-v-e60bdfd0><div id="loading-contain" data-v-e60bdfd0><div id="loading-wrap1" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball1" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap2" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball2" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap3" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball3" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap4" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball4" class="loading-ball" data-v-e60bdfd0></div></div> <div id="loading-wrap5" class="loading-wrap" data-v-e60bdfd0><div id="loading-ball5" class="loading-ball" data-v-e60bdfd0></div></div></div></dl> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4e82dffc data-v-1156296a data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>iChensw Blog</h3> <p class="description" data-v-4e82dffc data-v-4e82dffc>向热爱生命一样热爱编程</p> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>一条鱼</span>
+            
+          <span data-v-4e82dffc>2021 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1156296a><header class="navbar" data-v-1156296a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/avatar.jpg" alt="iChensw Blog" class="logo"> <span class="site-name">iChensw Blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Web/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Web/ES6/" class="nav-link"><i class="undefined"></i>
+  ES6
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      后端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Storage/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring全家桶
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Dubbo/" class="nav-link"><i class="undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis Plus
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/JavaQuestion/" class="nav-link"><i class="undefined"></i>
+  Java基础补充
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/Base/DesignPattern/" class="nav-link"><i class="undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/ElasticSearch/" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      服务器
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Others/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Others/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Documents/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/InterviewQuestion/" class="nav-link"><i class="undefined"></i>
+  面试题
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1156296a></div> <aside class="sidebar" data-v-1156296a><div class="personal-info-wrapper" data-v-828910c6 data-v-1156296a><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-828910c6> <h3 class="name" data-v-828910c6>
+    一条鱼
+  </h3> <div class="num" data-v-828910c6><div data-v-828910c6><h3 data-v-828910c6>50</h3> <h6 data-v-828910c6>文章</h6></div> <div data-v-828910c6><h3 data-v-828910c6>34</h3> <h6 data-v-828910c6>标签</h6></div></div> <ul class="social-links" data-v-828910c6></ul> <hr data-v-828910c6></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Web/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Web/ES6/" class="nav-link"><i class="undefined"></i>
+  ES6
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      后端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Storage/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring全家桶
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Dubbo/" class="nav-link"><i class="undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MyBatis/" class="nav-link"><i class="undefined"></i>
+  MyBatis Plus
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/JavaQuestion/" class="nav-link"><i class="undefined"></i>
+  Java基础补充
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/Base/DesignPattern/" class="nav-link"><i class="undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/ElasticSearch/" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      服务器
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Others/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Others/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Documents/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/IDEA/" class="nav-link"><i class="undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Storage/Java/InterviewQuestion/" class="nav-link"><i class="undefined"></i>
+  面试题
+</a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4e82dffc data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc></h3> <!----> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>一条鱼</span>
+            
+          <span data-v-4e82dffc>2021 - </span>
+          2022
+        </a></span></div></div> <div data-v-1156296a><main class="page"><section><div class="page-title"><h1 class="title">RabbitMQ基础</h1> <div data-v-1ff7123e><i class="iconfont reco-account" data-v-1ff7123e><span data-v-1ff7123e>一条鱼</span></i> <!----> <i class="iconfont reco-eye" data-v-1ff7123e><span id="/blogs/Storage/RabbitMQ/" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-1ff7123e><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <!----></div></div> <div class="theme-reco-content content__default"><h1 id="rabbitmq基础"><a href="#rabbitmq基础" class="header-anchor">#</a> RabbitMQ基础</h1> <h2 id="_1-mq的基本概念"><a href="#_1-mq的基本概念" class="header-anchor">#</a> 1. MQ的基本概念</h2> <p><strong>优势</strong>：</p> <ul><li>应用解耦：提高系统容错性和可维护性</li> <li>异步提速：提升用户体验和系统吞吐量</li> <li>削峰填谷：提高系统稳定性</li></ul> <p><strong>劣势</strong>：</p> <ul><li>系统可用性降低</li> <li>系统复杂度提高</li> <li>一致性问题</li></ul> <h3 id="_1-1-优势"><a href="#_1-1-优势" class="header-anchor">#</a> 1.1 优势</h3> <p><strong>应用解耦</strong>：</p> <p>​	不引用MQ之前的订单系统</p> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921105601739.png" alt="image-20210921105601739"></p> <p>​	引用MQ之后的订单系统</p> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921105736498.png" alt="image-20210921105736498"></p> <hr> <p><strong>异步提速</strong>：</p> <p>​	未使用MQ之前的执行速度</p> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921105907503.png" alt="image-20210921105907503"></p> <p>​	使用MQ之后的执行速度</p> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921105948383.png" alt="image-20210921105948383"></p> <hr> <p><strong>削峰填谷</strong>：</p> <p>​	未使用MQ时，高峰流量会导致系统崩溃</p> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921110220536.png" alt="image-20210921110220536"></p> <p>​	使用MQ后，可以限制每秒处理多少请求，将流量峰值时间段推迟到空闲时间段继续请求</p> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921110314299.png" alt="image-20210921110314299"></p> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921110356292.png" alt="image-20210921110356292"></p> <hr> <h3 id="_1-2-劣势"><a href="#_1-2-劣势" class="header-anchor">#</a> 1.2 劣势</h3> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921111451818.png" alt="image-20210921111451818"></p> <hr> <h3 id="_1-3-常见的mq产品"><a href="#_1-3-常见的mq产品" class="header-anchor">#</a> 1.3 常见的MQ产品</h3> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921112647992.png" alt="image-20210921112647992"></p> <h2 id="_2-rabbitmq简介"><a href="#_2-rabbitmq简介" class="header-anchor">#</a> 2. RabbitMQ简介</h2> <p>​	2007年，Rabbit技术公司基于AMOP标准开发的RabbitMQ 1.0发布。RabbitMQ采用Erlang语言开发。Erlang语言由Ericson设计，专门为开发高并发和分布式系统的一种语言，在电信领域使用广泛。</p> <p>​	RabbitMQ基本架构如图</p> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921113704549.png" alt="image-20210921113704549"></p> <hr> <p><strong>RabbitMQ提供了6种工作模式</strong>：简单模式、work queues、Publish/Subscribe发布与订阅模式、Routing路由模式、Topics主题模式、RPC远程调用模式（不太算MQ；暂不介绍）</p> <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210921120451149.png" alt="image-20210921120451149"></p> <hr> <h3 id="小结"><a href="#小结" class="header-anchor">#</a> 小结</h3> <ol><li>RabbitMQ是基于AMQP协议使用Erlang语言开发的一款消息队列产品。</li> <li>RabbitMQ提供了6种工作模式。</li> <li>AMQP是协议，类比HTTP</li></ol> <h2 id=""><a href="#" class="header-anchor">#</a></h2> <h2 id="_3-rabbitmq安装介绍"><a href="#_3-rabbitmq安装介绍" class="header-anchor">#</a> 3. RabbitMQ安装介绍</h2></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-70334359><li class="level-2" data-v-70334359><a href="/blogs/Storage/RabbitMQ/#_1-mq的基本概念" class="sidebar-link reco-side-_1-mq的基本概念" data-v-70334359>1. MQ的基本概念</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/RabbitMQ/#_1-1-优势" class="sidebar-link reco-side-_1-1-优势" data-v-70334359>1.1 优势</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/RabbitMQ/#_1-2-劣势" class="sidebar-link reco-side-_1-2-劣势" data-v-70334359>1.2 劣势</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/RabbitMQ/#_1-3-常见的mq产品" class="sidebar-link reco-side-_1-3-常见的mq产品" data-v-70334359>1.3 常见的MQ产品</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/RabbitMQ/#_2-rabbitmq简介" class="sidebar-link reco-side-_2-rabbitmq简介" data-v-70334359>2. RabbitMQ简介</a></li><li class="level-3" data-v-70334359><a href="/blogs/Storage/RabbitMQ/#小结" class="sidebar-link reco-side-小结" data-v-70334359>小结</a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/RabbitMQ/#" class="sidebar-link reco-side-" data-v-70334359></a></li><li class="level-2" data-v-70334359><a href="/blogs/Storage/RabbitMQ/#_3-rabbitmq安装介绍" class="sidebar-link reco-side-_3-rabbitmq安装介绍" data-v-70334359>3. RabbitMQ安装介绍</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><canvas id="vuepress-canvas-cursor"></canvas><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="left:88px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 iChensw Blog
+    </div> <div class="operation" style="left:148px;bottom:40px;display:;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="left:30px;bottom:-20px;opacity:0.9;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div><div></div><!----><!----></div></div>
+    <script src="/assets/js/app.32f0200a.js" defer></script><script src="/assets/js/3.11fa7831.js" defer></script><script src="/assets/js/1.13c24760.js" defer></script><script src="/assets/js/44.41c015b7.js" defer></script><script src="/assets/js/8.ff5ef1e6.js" defer></script>
+  </body>
+</html>
